@@ -11,12 +11,15 @@ const Container = styled.button`
   border-radius: 4px;
   margin-top: 1rem;
   font-size: 0.9rem;
+  font-family: 
   outline: 0;
+  cursor: pointer;
   box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2),
     0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.12);
-  ${({ theme: { buttons }, variant }) => {
+  ${({ theme: { brandPrimaryFont, buttons }, variant }) => {
     const { bg, color, hover, outline } = buttons[variant] || buttons.primary
     return `
+      font-family: ${brandPrimaryFont};
       background-color: ${bg};
       color: ${color};
       &:hover {
