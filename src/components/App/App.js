@@ -1,5 +1,6 @@
 import React from 'react'
+import Login from '../Login'
 
-const App = () => <div>Lorem</div>
+const App = () => <Login />
 
 export default App
