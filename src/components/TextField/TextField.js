@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useContext, useRef, useState } from 'react'
 import PropTypes from 'prop-types'
-import styled from 'styled-components'
+import styled, { ThemeContext } from 'styled-components'
 
 export const defaultLabelStyles = `
   transform: translate(0,1.5rem) scale(1);
@@ -12,7 +12,7 @@ export const labelAboveInputStyles = `
 const Container = styled.div`
   position: relative;
   height: 3rem;
-  color: rgba(0, 0, 0, 0.54);
+  color: ${({ theme: { brandBlack } }) => brandBlack};
   display: flex;
   margin: 1rem 0 0.5rem;
   width: ${({ isFullWidth }) => (isFullWidth ? '100%' : '250px')};
@@ -22,8 +22,8 @@ const Label = styled.label`
   position: absolute;
   transition: transform 0.1s ease-in-out, color 0.1s ease-in-out;
   background-color: inherit;
-  color: ${({ isInputFocused }) =>
-    isInputFocused ? '#333' : 'rgba(0, 0, 0, 0.54)'};
+  color: ${({ isInputFocused, theme: { brandBlack, brandTranslucentBlack } }) =>
+    isInputFocused ? brandBlack : brandTranslucentBlack};
   ${({ isAboveInput }) =>
     isAboveInput ? labelAboveInputStyles : defaultLabelStyles};
 `
@@ -43,8 +43,10 @@ const Input = styled.input`
   border: 0;
   border-bottom: 1px solid;
   transition: border-color 0.1s ease-in-out;
-  border-color: ${({ isFocused }) =>
-    isFocused ? '#333' : 'rgba(0, 0, 0, 0.54)'};
+  border-color: ${({
+    isFocused,
+    theme: { brandBlack, brandTranslucentBlack },
+  }) => (isFocused ? brandBlack : brandTranslucentBlack)};
 `
 
 const TextField = ({
@@ -61,6 +63,7 @@ const TextField = ({
 }) => {
   const [isFocused, setIsFocused] = useState(false)
   const inputRef = useRef(null)
+  const theme = useContext(ThemeContext)
   const handleFocus = () => setIsFocused(true)
   const handleBlur = () => setIsFocused(false)
 
@@ -89,6 +92,7 @@ const TextField = ({
         ref={inputRef}
         required={isRequired}
         type={type}
+        theme={theme}
         value={value}
       />
     </Container>
