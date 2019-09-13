@@ -1,8 +1,15 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import TextField from '../TextField'
 
-const Container = styled.div``
+import Form from './Form'
+
+const Container = styled.div`
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  margin-top: 10%;
+`
 
 const Login = () => {
   const [email, setEmail] = useState('')
@@ -16,23 +23,7 @@ const Login = () => {
   }
   return (
     <Container>
-      <form onSubmit={handleSubmit}>
-        <TextField
-          autofocus={true}
-          label="Email"
-          id="email"
-          isRequired={true}
-          name="email"
-          type="email"
-        />
-        <TextField
-          label="Password"
-          id="password"
-          isRequired={true}
-          name="password"
-          type="password"
-        />
-      </form>
+      <Form />
     </Container>
   )
 }

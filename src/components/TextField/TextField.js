@@ -1,6 +1,6 @@
-import React, { useContext, useRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
 import PropTypes from 'prop-types'
-import styled, { ThemeContext } from 'styled-components'
+import styled from 'styled-components'
 
 export const defaultLabelStyles = `
   transform: translate(0,1.5rem) scale(1);
@@ -63,7 +63,6 @@ const TextField = ({
 }) => {
   const [isFocused, setIsFocused] = useState(false)
   const inputRef = useRef(null)
-  const theme = useContext(ThemeContext)
   const handleFocus = () => setIsFocused(true)
   const handleBlur = () => setIsFocused(false)
 
@@ -92,7 +91,6 @@ const TextField = ({
         ref={inputRef}
         required={isRequired}
         type={type}
-        theme={theme}
         value={value}
       />
     </Container>
