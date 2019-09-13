@@ -3,11 +3,12 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 export const defaultLabelStyles = `
-  transform: translate(0,1.5rem) scale(1);
+  transform: translate(0,1.5rem);
   cursor: text;
 `
 export const labelAboveInputStyles = `
-  transform: translate(-0.2rem,0) scale(.75);
+  transform: translate(0,0);
+  font-size: 0.75rem;
 `
 const Container = styled.div`
   position: relative;
@@ -20,7 +21,8 @@ const Container = styled.div`
 const Label = styled.label`
   font-size: 1rem;
   position: absolute;
-  transition: transform 0.1s ease-in-out, color 0.1s ease-in-out;
+  transition: transform 0.1s ease-in-out, color 0.1s ease-in-out,
+    font-size 0.1s ease-in-out;
   background-color: inherit;
   color: ${({ isInputFocused, theme: { brandBlack, brandTranslucentBlack } }) =>
     isInputFocused ? brandBlack : brandTranslucentBlack};
@@ -38,6 +40,7 @@ const Input = styled.input`
   margin-top: 1rem;
   overflow-x: auto;
   text-overflow: ellipsis;
+  font-size: 0.75rem;
   background-color: inherit;
   outline: 0;
   border: 0;

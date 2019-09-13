@@ -20,7 +20,9 @@ const Form = () => (
       name="password"
       type="password"
     />
-    <Button fullWidth={true}>Login</Button>
+    <Button fullWidth={true} type="submit">
+      Login
+    </Button>
   </form>
 )
 

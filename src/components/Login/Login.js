@@ -7,8 +7,13 @@ const Container = styled.div`
   height: 100vh;
   width: 100vw;
   display: flex;
-  justify-content: center;
-  margin-top: 10%;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 10%;
+`
+const Title = styled.p`
+  font-size: 1.5rem;
+  font-weight: bold;
 `
 
 const Login = () => {
@@ -23,6 +28,7 @@ const Login = () => {
   }
   return (
     <Container>
+      <Title>Log in</Title>
       <Form />
     </Container>
   )
