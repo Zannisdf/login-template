@@ -6,15 +6,19 @@ import defaultTheme from './styles/defaultTheme'
 
 import { ThemeProvider } from 'styled-components'
 import App from './components/App'
+import AuthProvider from './context/AuthContext'
 import GlobalStyle from './styles/GlobalStyle'
+import UserProvider from './context/UserContext'
 
 ReactDOM.render(
-  <>
-    <GlobalStyle />
-    <ThemeProvider theme={defaultTheme}>
-      <App />
-    </ThemeProvider>
-  </>,
+  <AuthProvider>
+    <UserProvider>
+      <GlobalStyle />
+      <ThemeProvider theme={defaultTheme}>
+        <App />
+      </ThemeProvider>
+    </UserProvider>
+  </AuthProvider>,
   document.getElementById('root')
 )
 

@@ -3,8 +3,14 @@ import React from 'react'
 import Button from '../Button'
 import TextField from '../TextField'
 
-const Form = () => (
-  <form>
+const Form = ({
+  email,
+  password,
+  handleEmailChange,
+  handlePasswordChange,
+  handleSubmit,
+}) => (
+  <form onSubmit={handleSubmit}>
     <TextField
       autofocus={true}
       label="Email"
@@ -12,6 +18,8 @@ const Form = () => (
       isRequired={true}
       name="email"
       type="email"
+      handleChange={handleEmailChange}
+      value={email}
     />
     <TextField
       label="Password"
@@ -19,6 +27,8 @@ const Form = () => (
       isRequired={true}
       name="password"
       type="password"
+      handleChange={handlePasswordChange}
+      value={password}
     />
     <Button fullWidth={true} type="submit">
       Login

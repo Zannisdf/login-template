@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 
+import { useAuth } from '../../context/AuthContext'
 import Form from './Form'
 
 const Container = styled.div`
@@ -18,18 +19,34 @@ const Title = styled.p`
 
 const Login = () => {
   const [email, setEmail] = useState('')
-  const handleChange = e => {
+  const [password, setPassword] = useState('')
+  const { login } = useAuth()
+
+  const handleEmailChange = e => {
     e.persist()
     setEmail(e.target.value)
   }
-  const handleSubmit = e => {
-    // e.preventDefault()
-    console.log()
+
+  const handlePasswordChange = e => {
+    e.persist()
+    setPassword(e.target.value)
   }
+
+  const handleSubmit = e => {
+    e.preventDefault()
+    login({ email, password })
+  }
+
   return (
     <Container>
       <Title>Log in</Title>
-      <Form />
+      <Form
+        email={email}
+        password={password}
+        handleEmailChange={handleEmailChange}
+        handlePasswordChange={handlePasswordChange}
+        handleSubmit={handleSubmit}
+      />
     </Container>
   )
 }

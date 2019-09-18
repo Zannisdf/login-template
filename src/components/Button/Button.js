@@ -11,7 +11,6 @@ const Container = styled.button`
   border-radius: 4px;
   margin-top: 1rem;
   font-size: 0.9rem;
-  font-family: 
   outline: 0;
   cursor: pointer;
   box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2),
