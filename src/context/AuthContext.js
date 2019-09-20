@@ -44,7 +44,7 @@ const AuthProvider = props => {
 export const useAuth = () => {
   const context = useContext(AuthContext)
 
-  if (!context) {
+  if (context === undefined) {
     throw new Error('UseAuth should be called within an Auth Provider')
   }
 

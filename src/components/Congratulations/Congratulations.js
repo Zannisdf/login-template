@@ -3,11 +3,11 @@ import PropTypes from 'prop-types'
 
 import Button from '../Button'
 
-const Congratulations = ({ name }) => (
+const Congratulations = ({ logout, name }) => (
   <div>
     <h1>Congratulations {name}!</h1>
     <p>You've signed in successfully.</p>
-    <Button>Sign out</Button>
+    <Button onClick={logout}>Sign out</Button>
   </div>
 )
 

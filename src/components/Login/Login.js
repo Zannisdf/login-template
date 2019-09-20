@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 
-import { useAuth } from '../../context/AuthContext'
 import Form from './Form'
 
 const Container = styled.div`
@@ -17,10 +16,9 @@ const Title = styled.p`
   font-weight: bold;
 `
 
-const Login = () => {
+const Login = ({ login }) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const { login } = useAuth()
 
   const handleEmailChange = e => {
     e.persist()

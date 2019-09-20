@@ -1,11 +1,14 @@
 import React from 'react'
 
-import Login from '../Login'
+import { useUser } from '../../context/UserContext'
 
-const App = () => (
-  <>
-    <Login />
-  </>
-)
+import AuthenticatedApp from '../AuthenticatedApp'
+import UnauthenticatedApp from '../UnauthenticatedApp'
+
+const App = () => {
+  const { user } = useUser()
+
+  return <>{user ? <AuthenticatedApp /> : <UnauthenticatedApp />}</>
+}
 
 export default App

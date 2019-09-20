@@ -5,20 +5,23 @@ import * as serviceWorker from './serviceWorker'
 import defaultTheme from './styles/defaultTheme'
 
 import { ThemeProvider } from 'styled-components'
+import { BrowserRouter } from 'react-router-dom'
 import App from './components/App'
 import AuthProvider from './context/AuthContext'
 import GlobalStyle from './styles/GlobalStyle'
 import UserProvider from './context/UserContext'
 
 ReactDOM.render(
-  <AuthProvider>
-    <UserProvider>
-      <GlobalStyle />
-      <ThemeProvider theme={defaultTheme}>
-        <App />
-      </ThemeProvider>
-    </UserProvider>
-  </AuthProvider>,
+  <BrowserRouter>
+    <AuthProvider>
+      <UserProvider>
+        <GlobalStyle />
+        <ThemeProvider theme={defaultTheme}>
+          <App />
+        </ThemeProvider>
+      </UserProvider>
+    </AuthProvider>
+  </BrowserRouter>,
   document.getElementById('root')
 )
 
