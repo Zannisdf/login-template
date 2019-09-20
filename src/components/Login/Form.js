@@ -5,6 +5,7 @@ import TextField from '../TextField'
 
 const Form = ({
   email,
+  isSent,
   password,
   handleEmailChange,
   handlePasswordChange,
@@ -30,7 +31,7 @@ const Form = ({
       handleChange={handlePasswordChange}
       value={password}
     />
-    <Button fullWidth={true} type="submit">
+    <Button fullWidth={true} type="submit" disabled={isSent}>
       Login
     </Button>
   </form>

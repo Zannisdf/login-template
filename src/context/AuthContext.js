@@ -3,6 +3,8 @@ import { useAsync } from 'react-async'
 
 import * as authClient from '../utils/authClient'
 
+import { FullPageSpinner } from '../components/Spinner/FullPageSpinner'
+
 const AuthContext = React.createContext()
 
 const AuthProvider = props => {
@@ -24,7 +26,7 @@ const AuthProvider = props => {
 
   if (!isFinished) {
     if (isPending) {
-      return <div>Loading...</div>
+      return <FullPageSpinner />
     }
     if (isRejected) {
       return (

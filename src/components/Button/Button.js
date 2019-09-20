@@ -2,6 +2,14 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
+const disabledStyles = `
+  opacity: 0.75;
+  cursor: disabled;
+`
+const enabledStyles = `
+  cursor: pointer;
+`
+
 const Container = styled.button`
   height: 2.5rem;
   transition: background-color 0.1s ease-in-out;
@@ -12,9 +20,9 @@ const Container = styled.button`
   margin-top: 1rem;
   font-size: 0.9rem;
   outline: 0;
-  cursor: pointer;
   box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2),
     0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.12);
+  ${({ disabled }) => (disabled ? disabledStyles : enabledStyles)};
   ${({ theme: { brandPrimaryFont, buttons }, variant }) => {
     const { bg, color, hover, outline } = buttons[variant] || buttons.primary
     return `
@@ -39,6 +47,7 @@ const Container = styled.button`
 const Button = ({
   children,
   className,
+  disabled,
   fullWidth = true,
   onClick,
   type = 'button',
@@ -46,6 +55,7 @@ const Button = ({
 }) => (
   <Container
     className={className}
+    disabled={disabled}
     fullWidth={fullWidth}
     onClick={onClick}
     type={type}

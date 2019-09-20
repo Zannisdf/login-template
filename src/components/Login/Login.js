@@ -19,6 +19,7 @@ const Title = styled.p`
 const Login = ({ login }) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [isSent, setIsSent] = useState(false)
 
   const handleEmailChange = e => {
     e.persist()
@@ -32,7 +33,8 @@ const Login = ({ login }) => {
 
   const handleSubmit = e => {
     e.preventDefault()
-    login({ email, password })
+    setIsSent(true)
+    login({ email, password }).then(() => setIsSent(false))
   }
 
   return (
@@ -40,6 +42,7 @@ const Login = ({ login }) => {
       <Title>Log in</Title>
       <Form
         email={email}
+        isSent={isSent}
         password={password}
         handleEmailChange={handleEmailChange}
         handlePasswordChange={handlePasswordChange}
