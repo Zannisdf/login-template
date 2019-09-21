@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 
 import Form from './Form'
+import Notification from '../Notification'
 
 const Container = styled.div`
   height: 100vh;
@@ -20,6 +21,7 @@ const Login = ({ login }) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [isSent, setIsSent] = useState(false)
+  const [error, setError] = useState('')
 
   const handleEmailChange = e => {
     e.persist()
@@ -33,8 +35,15 @@ const Login = ({ login }) => {
 
   const handleSubmit = e => {
     e.preventDefault()
+    setError('')
     setIsSent(true)
-    login({ email, password }).then(() => setIsSent(false))
+    login({ email, password })
+      .then(() => setIsSent(false))
+      .catch(e => {
+        console.log(`Error while trying to log in: ${e.message}`)
+        setError('Check your email or password and try again.')
+        setIsSent(false)
+      })
   }
 
   return (
@@ -48,6 +57,7 @@ const Login = ({ login }) => {
         handlePasswordChange={handlePasswordChange}
         handleSubmit={handleSubmit}
       />
+      <Notification message={error} />
     </Container>
   )
 }
