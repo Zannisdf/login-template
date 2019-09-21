@@ -1,8 +1,11 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 
+import validateCredentials from '../../utils/validateCredentials'
+
 import Form from './Form'
 import Notification from '../Notification'
+import ValidationError from '../ValidationError/ValidationError'
 
 const Container = styled.div`
   height: 100vh;
@@ -33,10 +36,7 @@ const Login = ({ login }) => {
     setPassword(e.target.value)
   }
 
-  const handleSubmit = e => {
-    e.preventDefault()
-    setError('')
-    setIsSent(true)
+  const handleValidationSuccess = () => {
     login({ email, password })
       .then(() => setIsSent(false))
       .catch(e => {
@@ -44,6 +44,20 @@ const Login = ({ login }) => {
         setError('Check your email or password and try again.')
         setIsSent(false)
       })
+  }
+
+  const handleValidationFailure = e => {
+    setError(<ValidationError errors={e.errors} />)
+    setIsSent(false)
+  }
+
+  const handleSubmit = e => {
+    e.preventDefault()
+    setError('')
+    setIsSent(true)
+    validateCredentials('login', { email, password })
+      .then(handleValidationSuccess)
+      .catch(handleValidationFailure)
   }
 
   return (
