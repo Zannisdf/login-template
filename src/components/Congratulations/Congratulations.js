@@ -25,6 +25,7 @@ const Congratulations = ({ logout, name }) => (
 
 Congratulations.propTypes = {
   name: PropTypes.string.isRequired,
+  logout: PropTypes.func.isRequired,
 }
 
 export default Congratulations

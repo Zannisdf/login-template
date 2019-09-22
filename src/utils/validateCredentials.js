@@ -1,7 +1,9 @@
 import { string, object } from 'yup'
 
 let loginSchema = object().shape({
-  email: string().email('Please provide a valid email address'),
+  email: string()
+    .required('Email is required')
+    .email('Please provide a valid email address'),
   password: string()
     .required('Password is required')
     .min(6, 'Password is too short.')
@@ -15,6 +17,6 @@ const schemas = {
 }
 
 const validateCredentials = (schema, credentials) =>
-  schemas[schema].validate(credentials)
+  schemas[schema].validate(credentials, { abortEarly: false })
 
 export default validateCredentials

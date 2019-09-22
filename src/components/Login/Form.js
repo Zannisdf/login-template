@@ -11,7 +11,7 @@ const Form = ({
   handlePasswordChange,
   handleSubmit,
 }) => (
-  <form onSubmit={handleSubmit}>
+  <form onSubmit={handleSubmit} data-testid="login-form">
     <TextField
       autofocus={true}
       label="Email"

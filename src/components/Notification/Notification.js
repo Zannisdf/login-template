@@ -36,7 +36,7 @@ const Container = styled.div`
 `
 
 const Notification = ({ message, timeout = 4 }) => (
-  <Container isVisible={!!message} timeout={timeout}>
+  <Container isVisible={!!message} timeout={timeout} data-testid="notification">
     {message}
   </Container>
 )
